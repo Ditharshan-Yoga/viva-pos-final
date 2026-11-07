@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KOT #{{ $ticket->id }}</title><style>
+@page{margin:4mm}body{font:16px monospace;max-width:72mm;margin:20px auto;color:#000}h1{font-size:25px;margin:10px 0}h2{font-size:21px;margin:10px 0}.alert{border:3px solid #000;padding:10px;text-align:center;font-size:22px;font-weight:bold}.item{border-top:1px dashed #000;padding:12px 0;break-inside:avoid}.notes{font-weight:bold;white-space:pre-wrap}button{padding:14px;width:100%;margin:15px 0}small{display:block;margin-top:6px}@media print{.controls{display:none}body{margin:0;max-width:none}}
+</style></head><body><h1>KITCHEN ORDER</h1><strong>{{ $settings['business_name'] }}</strong><h2>{{ $ticket->label }} · #{{ $order->id }}</h2><div>KOT #{{ $ticket->id }}<br>{{ \Carbon\Carbon::parse($ticket->created_at)->timezone($settings['timezone'])->format('Y-m-d H:i') }}</div>
+@if($ticket->kind!=='new')<p class="alert">{{ $ticket->kind==='cancelled'?'CANCEL THESE ITEMS':'CHANGE TO SENT ITEMS' }}</p>@endif
+@foreach($items as $item)<div class="item"><strong>{{ $item['quantity'] }} × {{ $item['name'] }}</strong>@if(!empty($item['configuration']))<small>{{ implode(' · ',$item['configuration']) }}</small>@endif @if(!empty($item['notes']))<p class="notes">{{ $item['notes'] }}</p>@endif</div>@endforeach
+@if($order->notes)<p class="notes">Order note: {{ $order->notes }}</p>@endif
+<div class="controls"><p>Choose the kitchen printer. This ticket contains no prices. Reprinting creates another copy of the same ticket.</p><button onclick="window.print()">Print kitchen ticket</button></div></body></html>

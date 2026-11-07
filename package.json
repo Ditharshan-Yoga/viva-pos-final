@@ -1,0 +1,29 @@
+{
+    "name": "forno-pos",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc --noEmit && vite build",
+        "test:e2e": "playwright test"
+    },
+    "dependencies": {
+        "@inertiajs/react": "^2.0.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "lucide-react": "^0.468.0",
+        "laravel-echo": "^2.0.0",
+        "pusher-js": "^8.4.0"
+    },
+    "devDependencies": {
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0",
+        "@vitejs/plugin-react": "^5.0.0",
+        "@tailwindcss/vite": "^4.0.0",
+        "tailwindcss": "^4.0.0",
+        "laravel-vite-plugin": "^2.0.0",
+        "typescript": "^5.9.0",
+        "vite": "^7.0.0",
+        "@playwright/test": "^1.55.0"
+    }
+}
